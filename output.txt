@@ -1,65 +1,61 @@
 Starting extract data
-Now the data is load. It took 19.511223793029785 s
+Now the data is load. It took 18.157861948013306 s
 Secuential processing with for loop.
-With for loop it takes 13.88114881515503 s
+With for loop it takes 12.751682043075562 s
                                                 text  longitudBucle
-0  Jury The evidence place an . investigation tha...            158
-1  thanks , and '' Committee City of further the ...            239
-2  September-October of the Judge possible to Ful...            223
-3  interest in city widespread size , the reports...            185
-4  laws and ambiguous did find many of it electio...            134
-5  have legislators studied act `` '' to improvin...            134
-6  of `` among jury practices and it best general...            251
+0  of primary investigation . Atlanta's irregular...            158
+1  and term-end The further City the . in for cha...            239
+2  Court The in was charged primary investigate h...            223
+3  jury interest handful of of reports , city , s...            185
+4  registration laws `` many . '' election outmod...            134
+5  '' to and revised end studied these laws . and...            134
+6  are of it Fulton commented , The number and th...            251
 7                                    Merger proposed             15
-8  said jury reduce of '' these to cost `` believ...            148
-9  experienced city policies lacking jury `` The ...            140
+8  cost it `` the '' and achieve be greater belie...            148
+9  . , clerical said City `` Department jury Purc...            140
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 Secuential processing with apply function.
-With for loop it takes 0.09700655937194824 s
+With for loop it takes 0.09400629997253418 s
                                                 text  ...  longitudApply
-0  Jury The evidence place an . investigation tha...  ...            158
-1  thanks , and '' Committee City of further the ...  ...            239
-2  September-October of the Judge possible to Ful...  ...            223
-3  interest in city widespread size , the reports...  ...            185
-4  laws and ambiguous did find many of it electio...  ...            134
-5  have legislators studied act `` '' to improvin...  ...            134
-6  of `` among jury practices and it best general...  ...            251
+0  of primary investigation . Atlanta's irregular...  ...            158
+1  and term-end The further City the . in for cha...  ...            239
+2  Court The in was charged primary investigate h...  ...            223
+3  jury interest handful of of reports , city , s...  ...            185
+4  registration laws `` many . '' election outmod...  ...            134
+5  '' to and revised end studied these laws . and...  ...            134
+6  are of it Fulton commented , The number and th...  ...            251
 7                                    Merger proposed  ...             15
-8  said jury reduce of '' these to cost `` believ...  ...            148
-9  experienced city policies lacking jury `` The ...  ...            140
+8  cost it `` the '' and achieve be greater belie...  ...            148
+9  . , clerical said City `` Department jury Purc...  ...            140
 
 [10 rows x 3 columns]
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 Pool processing with 4 cores.
-With for loop it takes 4.5704240798950195 s
-                                                text  ...  longitudApply
-0  Jury The evidence place an . investigation tha...  ...            158
-1  thanks , and '' Committee City of further the ...  ...            239
-2  September-October of the Judge possible to Ful...  ...            223
-3  interest in city widespread size , the reports...  ...            185
-4  laws and ambiguous did find many of it electio...  ...            134
-5  have legislators studied act `` '' to improvin...  ...            134
-6  of `` among jury practices and it best general...  ...            251
-7                                    Merger proposed  ...             15
-8  said jury reduce of '' these to cost `` believ...  ...            148
-9  experienced city policies lacking jury `` The ...  ...            140
-
-[10 rows x 3 columns]
+With for loop it takes 3.772083044052124 s
+                                                text  longitudBucle
+0  of primary investigation . Atlanta's irregular...            158
+1  and term-end The further City the . in for cha...            239
+2  Court The in was charged primary investigate h...            223
+3  jury interest handful of of reports , city , s...            185
+4  registration laws `` many . '' election outmod...            134
+5  '' to and revised end studied these laws . and...            134
+6  are of it Fulton commented , The number and th...            251
+7                                    Merger proposed             15
+8  cost it `` the '' and achieve be greater belie...            148
+9  . , clerical said City `` Department jury Purc...            140
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-With Apply it takes 2.099881172180176 s
-                                                text  ...  longitudApply
-0  Jury The evidence place an . investigation tha...  ...            158
-1  thanks , and '' Committee City of further the ...  ...            239
-2  September-October of the Judge possible to Ful...  ...            223
-3  interest in city widespread size , the reports...  ...            185
-4  laws and ambiguous did find many of it electio...  ...            134
-5  have legislators studied act `` '' to improvin...  ...            134
-6  of `` among jury practices and it best general...  ...            251
-7                                    Merger proposed  ...             15
-8  said jury reduce of '' these to cost `` believ...  ...            148
-9  experienced city policies lacking jury `` The ...  ...            140
-
-[10 rows x 3 columns]
-Finish script in 40.384389877319336
+With Apply it takes 2.747534990310669 s
+                                                text  longitudApply
+0  of primary investigation . Atlanta's irregular...            158
+1  and term-end The further City the . in for cha...            239
+2  Court The in was charged primary investigate h...            223
+3  jury interest handful of of reports , city , s...            185
+4  registration laws `` many . '' election outmod...            134
+5  '' to and revised end studied these laws . and...            134
+6  are of it Fulton commented , The number and th...            251
+7                                    Merger proposed             15
+8  cost it `` the '' and achieve be greater belie...            148
+9  . , clerical said City `` Department jury Purc...            140
+Finish script in 37.795130491256714

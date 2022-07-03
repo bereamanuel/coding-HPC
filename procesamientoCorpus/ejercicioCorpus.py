@@ -97,6 +97,7 @@ if __name__=="__main__":
         finishData = time.time()
         print(f"Now the data is load. It took {finishData - startData} s", file=f)
 
+        trozos = partir(df, 10)
 
         print("Secuential processing with for loop.", file=f)
         startBucleSecuential = time.time()
@@ -120,7 +121,7 @@ if __name__=="__main__":
 
         print(f"Pool processing with {int(mp.cpu_count()//2)} cores.", file=f) 
         with mp.Pool(int(mp.cpu_count()//2)) as p:
-            trozos = partir(df, 10)
+            
             startBuclePool = time.time()
             nuevo = pd.concat(p.map(contarPalabrasBucle, trozos) , ignore_index= True)
             finishBuclePool = time.time()
