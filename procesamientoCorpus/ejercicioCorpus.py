@@ -17,7 +17,6 @@ import time
 #Multiprocessing utilities
 import multiprocessing as mp
 from multiprocessing import Pool
-from functools import partial
 
 #Extract data
 import nltk
@@ -31,7 +30,7 @@ def make_texts():
         return [" ".join(np.random.permutation(sents)) for sents in brown.sents()]
 
 
-def contarPalabrasBucle(columna, data):
+def contarPalabrasBucle(data, columna = "text"):
     """
     Dado un dataset y una columna con string, devuelve el dataset modificado añadiendo el conteo de palbras de la columna dada.
     Input:
@@ -55,7 +54,7 @@ def contarPalabrasBucle(columna, data):
     return data
 
 
-def contarPalabrasApply(columna, data):
+def contarPalabrasApply(data, columna = "text"):
     """
     Dado un dataset y una columna con string, devuelve el dataset modificado añadiendo el conteo de palbras de la columna dada.
     Input:
@@ -101,7 +100,7 @@ if __name__=="__main__":
 
     print("Secuential processing with for loop.")
     startBucleSecuential = time.time()
-    df = contarPalabrasBucle("text", df)
+    df = contarPalabrasBucle(df)
     finishBucleSecuential = time.time()
     print(f"With for loop it takes {finishBucleSecuential - startBucleSecuential} s")
     print(df[:10])
@@ -110,7 +109,7 @@ if __name__=="__main__":
 
     print("Secuential processing with apply function.")
     startApplySecuential = time.time()
-    df = contarPalabrasApply("text", df)
+    df = contarPalabrasApply(df)
     finishApplySecuential = time.time()
     print(f"With for loop it takes {finishApplySecuential - startApplySecuential} s")
     print(df[:10])
@@ -118,26 +117,24 @@ if __name__=="__main__":
     print(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
     print(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
     print(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
-    
+
     print(f"Pool processing with {mp.cpu_count() -1} cores.") 
-    p=mp.Pool(mp.cpu_count() -1 )
-    trozos = partir(df, 10)
-    print(" -For loop.")
-    startBuclePool = time.time()
-    funciones = partial(contarPalabrasBucle,"text")
-    nuevo = p.map(funciones, df )
-    finishBuclePool = time.time()
-    print(f"With for loop it takes {finishBuclePool - startBuclePool} s")
-    print(nuevo[:10])
+    with mp.Pool(3) as p:
+        trozos = partir(df, 10)
+        print(" -For loop.")
+        startBuclePool = time.time()
+        nuevo = pd.concat(p.map(contarPalabrasBucle, trozos) , ignore_index= True)
+        finishBuclePool = time.time()
+        print(f"With for loop it takes {finishBuclePool - startBuclePool} s")
+        print(nuevo[:10])
 
     print(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
 
-    print(" -Apply.")
-    startApplyPool = time.time()
-    funciones = partial(contarPalabrasApply,"text")
-    nuevo = p.map(funciones, df)
-    finishApplyPool = time.time()
-    print(f"With for loop it takes {finishApplyPool - startApplyPool} s")
-    p.close()
-    print(nuevo[:10])
+    with mp.Pool(3) as p:
+        print(" -Apply.")
+        startApplyPool = time.time()        
+        nuevo = pd.concat(p.map(contarPalabrasApply, trozos) , ignore_index= True)
+        finishApplyPool = time.time()
+        print(f"With for loop it takes {finishApplyPool - startApplyPool} s")
+        print(nuevo[:10])
 
