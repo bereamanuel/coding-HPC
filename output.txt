@@ -1,0 +1,65 @@
+Starting extract data
+Now the data is load. It took 19.511223793029785 s
+Secuential processing with for loop.
+With for loop it takes 13.88114881515503 s
+                                                text  longitudBucle
+0  Jury The evidence place an . investigation tha...            158
+1  thanks , and '' Committee City of further the ...            239
+2  September-October of the Judge possible to Ful...            223
+3  interest in city widespread size , the reports...            185
+4  laws and ambiguous did find many of it electio...            134
+5  have legislators studied act `` '' to improvin...            134
+6  of `` among jury practices and it best general...            251
+7                                    Merger proposed             15
+8  said jury reduce of '' these to cost `` believ...            148
+9  experienced city policies lacking jury `` The ...            140
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Secuential processing with apply function.
+With for loop it takes 0.09700655937194824 s
+                                                text  ...  longitudApply
+0  Jury The evidence place an . investigation tha...  ...            158
+1  thanks , and '' Committee City of further the ...  ...            239
+2  September-October of the Judge possible to Ful...  ...            223
+3  interest in city widespread size , the reports...  ...            185
+4  laws and ambiguous did find many of it electio...  ...            134
+5  have legislators studied act `` '' to improvin...  ...            134
+6  of `` among jury practices and it best general...  ...            251
+7                                    Merger proposed  ...             15
+8  said jury reduce of '' these to cost `` believ...  ...            148
+9  experienced city policies lacking jury `` The ...  ...            140
+
+[10 rows x 3 columns]
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Pool processing with 4 cores.
+With for loop it takes 4.5704240798950195 s
+                                                text  ...  longitudApply
+0  Jury The evidence place an . investigation tha...  ...            158
+1  thanks , and '' Committee City of further the ...  ...            239
+2  September-October of the Judge possible to Ful...  ...            223
+3  interest in city widespread size , the reports...  ...            185
+4  laws and ambiguous did find many of it electio...  ...            134
+5  have legislators studied act `` '' to improvin...  ...            134
+6  of `` among jury practices and it best general...  ...            251
+7                                    Merger proposed  ...             15
+8  said jury reduce of '' these to cost `` believ...  ...            148
+9  experienced city policies lacking jury `` The ...  ...            140
+
+[10 rows x 3 columns]
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+With Apply it takes 2.099881172180176 s
+                                                text  ...  longitudApply
+0  Jury The evidence place an . investigation tha...  ...            158
+1  thanks , and '' Committee City of further the ...  ...            239
+2  September-October of the Judge possible to Ful...  ...            223
+3  interest in city widespread size , the reports...  ...            185
+4  laws and ambiguous did find many of it electio...  ...            134
+5  have legislators studied act `` '' to improvin...  ...            134
+6  of `` among jury practices and it best general...  ...            251
+7                                    Merger proposed  ...             15
+8  said jury reduce of '' these to cost `` believ...  ...            148
+9  experienced city policies lacking jury `` The ...  ...            140
+
+[10 rows x 3 columns]
+Finish script in 40.384389877319336

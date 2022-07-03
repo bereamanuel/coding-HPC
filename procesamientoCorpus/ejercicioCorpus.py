@@ -22,7 +22,6 @@ from multiprocessing import Pool
 import nltk
 from nltk.corpus import brown
 
-
 ## Functions
 
 def make_texts():
@@ -86,55 +85,55 @@ def partir(data, k):
 
 ## Start script
 if __name__=="__main__":
-    nltk.download("brown")
-    
+    inicioScript = time.time()
+    with open("output.txt", "a") as f:
+        nltk.download("brown")
+        
+        print("Starting extract data", file=f)
+        startData = time.time()
+        df = pd.DataFrame({
+            'text': make_texts() + make_texts() + make_texts() + make_texts()
+        })
+        finishData = time.time()
+        print(f"Now the data is load. It took {finishData - startData} s", file=f)
 
-    print("Starting extract data")
-    startData = time.time()
-    df = pd.DataFrame({
-        'text': make_texts() + make_texts() + make_texts() + make_texts()
-    })
-    finishData = time.time()
-    print(f"Now the data is load. It took {finishData - startData} s")
 
+        print("Secuential processing with for loop.", file=f)
+        startBucleSecuential = time.time()
+        bucle = contarPalabrasBucle(df)
+        finishBucleSecuential = time.time()
+        print(f"With for loop it takes {finishBucleSecuential - startBucleSecuential} s", file=f)
+        print(bucle[:10], file=f)
 
-    print("Secuential processing with for loop.")
-    startBucleSecuential = time.time()
-    df = contarPalabrasBucle(df)
-    finishBucleSecuential = time.time()
-    print(f"With for loop it takes {finishBucleSecuential - startBucleSecuential} s")
-    print(df[:10])
+        print(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ", file=f)
 
-    print(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
+        print("Secuential processing with apply function.", file=f)
+        startApplySecuential = time.time()
+        bucle = contarPalabrasApply(bucle)
+        finishApplySecuential = time.time()
+        print(f"With for loop it takes {finishApplySecuential - startApplySecuential} s", file=f)
+        print(bucle[:10], file=f)
 
-    print("Secuential processing with apply function.")
-    startApplySecuential = time.time()
-    df = contarPalabrasApply(df)
-    finishApplySecuential = time.time()
-    print(f"With for loop it takes {finishApplySecuential - startApplySecuential} s")
-    print(df[:10])
+        print(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ", file=f)
+        print(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ", file=f)
+        print(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ", file=f)
 
-    print(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
-    print(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
-    print(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
+        print(f"Pool processing with {int(mp.cpu_count()//2)} cores.", file=f) 
+        with mp.Pool(int(mp.cpu_count()//2)) as p:
+            trozos = partir(df, 10)
+            startBuclePool = time.time()
+            nuevo = pd.concat(p.map(contarPalabrasBucle, trozos) , ignore_index= True)
+            finishBuclePool = time.time()
+            print(f"With for loop it takes {finishBuclePool - startBuclePool} s", file=f)
+            print(nuevo[:10], file=f)
 
-    print(f"Pool processing with {mp.cpu_count() -1} cores.") 
-    with mp.Pool(3) as p:
-        trozos = partir(df, 10)
-        print(" -For loop.")
-        startBuclePool = time.time()
-        nuevo = pd.concat(p.map(contarPalabrasBucle, trozos) , ignore_index= True)
-        finishBuclePool = time.time()
-        print(f"With for loop it takes {finishBuclePool - startBuclePool} s")
-        print(nuevo[:10])
+        print(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ", file=f)
 
-    print(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
+        with mp.Pool(int(mp.cpu_count()//2)) as p:
+            startApplyPool = time.time()        
+            nuevo = pd.concat(p.map(contarPalabrasApply, trozos) , ignore_index= True)
+            finishApplyPool = time.time()
+            print(f"With Apply it takes {finishApplyPool - startApplyPool} s", file=f)
+            print(nuevo[:10], file=f)
 
-    with mp.Pool(3) as p:
-        print(" -Apply.")
-        startApplyPool = time.time()        
-        nuevo = pd.concat(p.map(contarPalabrasApply, trozos) , ignore_index= True)
-        finishApplyPool = time.time()
-        print(f"With for loop it takes {finishApplyPool - startApplyPool} s")
-        print(nuevo[:10])
-
+        print(f"Finish script in {time.time() - inicioScript}", file=f)

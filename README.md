@@ -1,3 +1,3 @@
 # Coding-HPC
 
-About 
+Exercises about HPC
