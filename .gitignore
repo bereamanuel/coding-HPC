@@ -2,3 +2,4 @@
 *.ipynb
 /ejemplos/*
 *.pyc
+*.csv
