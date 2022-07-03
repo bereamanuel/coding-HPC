@@ -110,10 +110,10 @@ if __name__=="__main__":
 
         print("Secuential processing with apply function.", file=f)
         startApplySecuential = time.time()
-        bucle = contarPalabrasApply(bucle)
+        apply = contarPalabrasApply(df)
         finishApplySecuential = time.time()
         print(f"With for loop it takes {finishApplySecuential - startApplySecuential} s", file=f)
-        print(bucle[:10], file=f)
+        print(apply[:10], file=f)
 
         print(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ", file=f)
         print(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ", file=f)
@@ -121,7 +121,6 @@ if __name__=="__main__":
 
         print(f"Pool processing with {int(mp.cpu_count()//2)} cores.", file=f) 
         with mp.Pool(int(mp.cpu_count()//2)) as p:
-            
             startBuclePool = time.time()
             nuevo = pd.concat(p.map(contarPalabrasBucle, trozos) , ignore_index= True)
             finishBuclePool = time.time()
